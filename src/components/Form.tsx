@@ -49,11 +49,11 @@ const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, 
       e.preventDefault();
       setIsLoading(true);
       try {
-         const response = await baseUrl.get('pokemon/' + pokemonName);
+         const response = await baseUrl.get('pokemon/' + pokemonName.toLocaleLowerCase());
          setPokemon(response.data);
 
          try {
-            const response = await baseUrl.get('pokemon-species/' + pokemonName);
+            const response = await baseUrl.get('pokemon-species/' + pokemonName.toLocaleLowerCase());
             setPokemonSpecies(response.data);
          } catch (error){
             setPokemonSpecies('Unknown');
