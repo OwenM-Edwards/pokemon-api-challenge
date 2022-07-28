@@ -12,15 +12,20 @@ const Wrapper = styled.div`
   justify-content:center;
 
   .content {
-    width:500px;
+    width:600px;
     margin:0 auto;
-    padding-top:90px;
+    padding-top:20px;
     display:flex;
     flex-direction:column;
     align-items:center;
   }
+  
+  .loadingContainer {
+    position:relative;
+    top:300px;
+  }
 
-  img {
+  .headerImage {
     width:300px;
     margin-bottom:50px;
   }
@@ -38,13 +43,15 @@ const App: React.FC = () => {
   const renderLoading = () => {
     if(isLoading){
       return (
-        <ClipLoader size={150} />
+        <div className="loadingContainer">
+          <ClipLoader size={150} color={"#0075BE"} />
+        </div>
       )
     }
     return (
       <div className="content">
 
-        <img src={who_pokemon_image}/>
+        <img className="headerImage" src={who_pokemon_image}/>
 
         <Form setIsError={setIsError} setPokemon={setPokemon} setIsLoading={setIsLoading} oakErrorCount={oakErrorCount} setOakErrorCount={setOakErrorCount}/>
 
