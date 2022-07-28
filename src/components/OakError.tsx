@@ -58,14 +58,14 @@ const OakError = ({ isError,setIsError,oakErrorCount }: Props) => {
             // Fade in
             document.querySelector('#wrapper')?.classList.remove('hidden');
 
-            // // After short time, fade out then remove error flag
-            // setTimeout(()=>{
-            //     document.querySelector('#wrapper')?.classList.add('hidden');
-            //     setTimeout(()=>{
-            //         setIsError(false);
-            //     }, 1000)
+            // After short time, fade out then remove error flag
+            setTimeout(()=>{
+                document.querySelector('#wrapper')?.classList.add('hidden');
+                setTimeout(()=>{
+                    setIsError(false);
+                }, 1000)
 
-            // }, 4000)
+            }, 4000)
 
         }, 600)
     }, []);
