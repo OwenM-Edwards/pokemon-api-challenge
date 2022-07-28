@@ -5,21 +5,23 @@ import styled from "styled-components";
 import who_pokemon_image from './images/who-is-pokemon.png'
 
 const Wrapper = styled.div`
-  background-color: #FB1B1B   ;
-  min-height:100vh;
   width:100%;
+  padding:50px 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   .content {
     width:500px;
     margin:0 auto;
-    padding-top:20%;
+    padding-top:90px;
     display:flex;
     flex-direction:column;
     align-items:center;
   }
 
   img {
-    width:200px;
+    width:300px;
     margin-bottom:50px;
   }
 `

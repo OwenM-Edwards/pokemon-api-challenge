@@ -6,6 +6,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
    background-color:blue;
    width:100%;
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
    form {
       padding:50px;
       background-color:#DFDFDF;
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
       flex-direction:column;
       input {
          padding:10px;
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       }
       input:nth-of-type(1){
          margin-bottom:20px;
@@ -42,6 +44,7 @@ const Form =({ setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorC
 
       } catch (error){
          setIsError(true);
+         setPokemon(false);
          if(oakErrorCount === 2){
             setOakErrorCount(0)
          }

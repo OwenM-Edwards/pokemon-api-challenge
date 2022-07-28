@@ -1,5 +1,5 @@
 import React, {useEffect}  from 'react';
-import OakImage from '../images/oak.jpeg'
+import OakImage from '../images/oak.png'
 import styled from "styled-components";
 
 
@@ -10,16 +10,24 @@ const Wrapper = styled.div`
     bottom:0;
     left:0;
     display:flex;
-    justify-content:flex-start;
+    justify-content:flex-end;
     align-items:flex-end;
     transition:all 0.5s ease-in-out;
-
-    img {
-        object-fit:contain;
-    }
+    background: url('${OakImage}') no-repeat center;
+    background-size:cover;
 
     &.hidden {
         opacity:0;
+    }
+
+
+    p {
+        position:absolute;
+        top:0;
+        left:100%;
+        width:400px;
+        font-size:30px;
+        color:white;
     }
 
 `
@@ -65,8 +73,7 @@ const OakError = ({ isError,setIsError,oakErrorCount }: Props) => {
 
     return (
         <Wrapper id="wrapper" className="hidden">
-            <p className="errorMessage">{getErrorMessage()}</p>
-            <img src={OakImage} alt="Professor Oak"/>
+            <p className="errorMessage">"{getErrorMessage()}"</p>
         </Wrapper>
     )
 }
