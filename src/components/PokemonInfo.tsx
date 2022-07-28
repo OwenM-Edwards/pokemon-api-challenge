@@ -10,6 +10,67 @@ interface Props {
 }
 
 
+const PokemonInfo = ({pokemon, pokemonSpecies}: Props) => {
+
+    const createPokemonStats = (stats : any):any[] => {
+        let tempHtml: any[] = [];
+        let key = 0;
+        stats.forEach(function (stat : any) {
+            tempHtml = [...tempHtml, (
+                <div key={key} className="statContainer">
+                    <p>{stat.stat.name}</p>
+                    <ul >
+                        <li>Base Value: {stat.base_stat}</li>
+                        <li>Effort: {stat.effort}</li>
+                    </ul>
+                </div>
+            )];
+            key++;
+        });
+        return tempHtml;
+    }
+
+    const createPokemonGameIndex = (games : any):any[] => {
+        let tempHtml: any[] = [];
+        let key = 0;
+        games.forEach(function (game : any) {
+            tempHtml = [...tempHtml, (
+                <li key={key}>
+                    <p>{game.version.name}</p>
+                </li>
+            )];
+            key++;
+        });
+        return tempHtml;
+    }
+
+    return (
+        <Wrapper>
+            <h2>{pokemon.name.replace(/^\w/, (name:string) => name.toUpperCase())}</h2>
+            <img src={pokemon.sprites.front_default}/>
+            
+            <div className="basicInfoContainer">
+                <p>Height: {pokemon.height / 10 } m</p>
+                <p>Weight: {pokemon.weight / 10 } kg</p>
+                <p>Species: {pokemonSpecies.names[1].name}</p>
+            </div>
+
+            {createPokemonStats(pokemon.stats)}
+
+            <div className="gamesContainer">
+                <h3>
+                    {pokemon.name.replace(/^\w/, (name:string) => name.toUpperCase())} has appeared in {pokemon.game_indices.length} games
+                </h3>
+                <ul>
+                    {createPokemonGameIndex(pokemon.game_indices)}
+                </ul>
+                
+            </div>
+        </Wrapper>   
+    )
+}
+
+
 const Wrapper = styled.div`
     background-color:#DFDFDF;
     display:flex;
@@ -96,67 +157,6 @@ const Wrapper = styled.div`
         }
     }
 `
-
-
-const PokemonInfo = ({pokemon, pokemonSpecies}: Props) => {
-
-    const createPokemonStats = (stats : any):any[] => {
-        let tempHtml: any[] = [];
-        let key = 0;
-        stats.forEach(function (stat : any) {
-            tempHtml = [...tempHtml, (
-                <div key={key} className="statContainer">
-                    <p>{stat.stat.name}</p>
-                    <ul >
-                        <li>Base Value: {stat.base_stat}</li>
-                        <li>Effort: {stat.effort}</li>
-                    </ul>
-                </div>
-            )];
-            key++;
-        });
-        return tempHtml;
-    }
-
-    const createPokemonGameIndex = (games : any):any[] => {
-        let tempHtml: any[] = [];
-        let key = 0;
-        games.forEach(function (game : any) {
-            tempHtml = [...tempHtml, (
-                <li key={key}>
-                    <p>{game.version.name}</p>
-                </li>
-            )];
-            key++;
-        });
-        return tempHtml;
-    }
-
-    return (
-        <Wrapper>
-            <h2>{pokemon.name.replace(/^\w/, (name:string) => name.toUpperCase())}</h2>
-            <img src={pokemon.sprites.front_default}/>
-            
-            <div className="basicInfoContainer">
-                <p>Height: {pokemon.height / 10 } m</p>
-                <p>Weight: {pokemon.weight / 10 } kg</p>
-                <p>Species: {pokemonSpecies.names[1].name}</p>
-            </div>
-
-            {createPokemonStats(pokemon.stats)}
-
-            <div className="gamesContainer">
-                <h3>
-                    {pokemon.name.replace(/^\w/, (name:string) => name.toUpperCase())} has appeared in {pokemon.game_indices.length} games
-                </h3>
-                <ul>
-                    {createPokemonGameIndex(pokemon.game_indices)}
-                </ul>
-                
-            </div>
-        </Wrapper>   
-    )
-}
 
 
 export default PokemonInfo;

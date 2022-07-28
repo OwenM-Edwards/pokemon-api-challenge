@@ -1,41 +1,6 @@
 import React, {useEffect}  from 'react';
 import OakImage from '../images/oak.png'
 import styled from "styled-components";
-
-
-const Wrapper = styled.div`
-    width:200px;
-    height:200px;
-    position:absolute;
-    bottom:0;
-    left:0;
-    display:flex;
-    justify-content:flex-end;
-    align-items:flex-end;
-    transition:all 0.5s ease-in-out;
-    background: url('${OakImage}') no-repeat center;
-    background-size:cover;
-
-    &.hidden {
-        opacity:0;
-    }
-
-    p {
-        position:absolute;
-        top:10%;
-        left:90%;
-        width:400px;
-        font-size:30px;
-        color:white;
-        text-indent:-10px;
-    }
-`
-
-interface Props {
-    isError:any;
-    setIsError:(setIsError:boolean) => void;
-    oakErrorCount:number;
-}
  
 
 const oakErrorPhrases = [
@@ -43,6 +8,13 @@ const oakErrorPhrases = [
     "You been drinking those Hi-Potions again?",
     "That meant to be one of those 'deeg-ee-mons' or something?"
 ]
+
+
+interface Props {
+    isError:any;
+    setIsError:(setIsError:boolean) => void;
+    oakErrorCount:number;
+}
 
 
 const OakError = ({ isError,setIsError,oakErrorCount }: Props) => {
@@ -75,6 +47,35 @@ const OakError = ({ isError,setIsError,oakErrorCount }: Props) => {
         </Wrapper>
     )
 }
+
+
+const Wrapper = styled.div`
+    width:200px;
+    height:200px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+    transition:all 0.5s ease-in-out;
+    background: url('${OakImage}') no-repeat center;
+    background-size:cover;
+
+    &.hidden {
+        opacity:0;
+    }
+
+    p {
+        position:absolute;
+        top:10%;
+        left:90%;
+        width:400px;
+        font-size:30px;
+        color:white;
+        text-indent:-10px;
+    }
+`
 
 
 export default OakError;

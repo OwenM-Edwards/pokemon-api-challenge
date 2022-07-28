@@ -3,34 +3,6 @@ import baseUrl from '../http-common';
 import styled from "styled-components";
 
 
-const Wrapper = styled.div`
-   width:100%;
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
-   form {
-      padding:50px;
-      background-color:#DFDFDF;
-      display:flex;
-      flex-direction:column;
-      border-radius:5px;
-
-      input {
-         padding:10px;
-         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-      }
-
-      input:nth-of-type(1){
-         margin-bottom:20px;
-      }
-
-      p {
-         color:red;
-         margin-top:20px;
-      }
-   }
-`
-
-
 interface Props {
    setPokemon:(pokemon: any) => void;
    setIsLoading:(isLoading: boolean) => void;
@@ -88,6 +60,34 @@ const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, 
       </Wrapper>
    )
 }
+
+
+const Wrapper = styled.div`
+   width:100%;
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+   form {
+      padding:50px;
+      background-color:#DFDFDF;
+      display:flex;
+      flex-direction:column;
+      border-radius:5px;
+
+      input {
+         padding:10px;
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      }
+
+      input:nth-of-type(1){
+         margin-bottom:20px;
+      }
+
+      p {
+         color:red;
+         margin-top:20px;
+      }
+   }
+`
 
 
 export default Form;

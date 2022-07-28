@@ -4,34 +4,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 import styled from "styled-components";
 import who_pokemon_image from './images/who-is-pokemon.png'
 
-const Wrapper = styled.div`
-  width:100%;
-  padding:50px 0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  .content {
-    width:600px;
-    margin:0 auto;
-    padding-top:20px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .loadingContainer {
-    position:relative;
-    top:300px;
-  }
-
-  .headerImage {
-    width:300px;
-    margin-bottom:50px;
-  }
-`
-
-
 
 const App: React.FC = () => {
   const [pokemon, setPokemon] = useState(false);
@@ -84,6 +56,34 @@ const App: React.FC = () => {
     </Wrapper>
   );
 }
+
+
+const Wrapper = styled.div`
+  width:100%;
+  padding:50px 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  .content {
+    width:600px;
+    margin:0 auto;
+    padding-top:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .loadingContainer {
+    position:relative;
+    top:300px;
+  }
+
+  .headerImage {
+    width:300px;
+    margin-bottom:50px;
+  }
+`
 
 
 export default App;
