@@ -20,16 +20,15 @@ const Wrapper = styled.div`
         opacity:0;
     }
 
-
     p {
         position:absolute;
-        top:0;
-        left:100%;
+        top:10%;
+        left:90%;
         width:400px;
         font-size:30px;
         color:white;
+        text-indent:-10px;
     }
-
 `
 
 interface Props {
@@ -59,14 +58,14 @@ const OakError = ({ isError,setIsError,oakErrorCount }: Props) => {
             // Fade in
             document.querySelector('#wrapper')?.classList.remove('hidden');
 
-            // After short time, fade out then remove error flag
-            setTimeout(()=>{
-                document.querySelector('#wrapper')?.classList.add('hidden');
-                setTimeout(()=>{
-                    setIsError(false);
-                }, 1000)
+            // // After short time, fade out then remove error flag
+            // setTimeout(()=>{
+            //     document.querySelector('#wrapper')?.classList.add('hidden');
+            //     setTimeout(()=>{
+            //         setIsError(false);
+            //     }, 1000)
 
-            }, 4000)
+            // }, 4000)
 
         }, 600)
     }, []);

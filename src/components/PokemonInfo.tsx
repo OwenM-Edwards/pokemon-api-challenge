@@ -14,10 +14,11 @@ const Wrapper = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-top:50px;
+    margin-top:30px;
     width:100%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     padding:40px;
+    border-radius:5px;
 
     img {
         /* width:100%; */

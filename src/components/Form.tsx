@@ -12,12 +12,20 @@ const Wrapper = styled.div`
       background-color:#DFDFDF;
       display:flex;
       flex-direction:column;
+      border-radius:5px;
+
       input {
          padding:10px;
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       }
+      
       input:nth-of-type(1){
          margin-bottom:20px;
+      }
+
+      p {
+         color:red;
+         margin-top:20px;
       }
    }
 `
@@ -29,10 +37,11 @@ interface Props {
    setIsError:(setIsError:boolean) => void;
    setOakErrorCount:(setOakErrorCount:number) => void;
    oakErrorCount:number;
+   isError:boolean;
 }
 
 
-const Form =({ setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorCount}: Props) => {
+const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorCount}: Props) => {
    const [pokemonName, setPokemonName] = useState('');
 
    const handleSubmit = async (e:React.FormEvent) => {
@@ -50,8 +59,7 @@ const Form =({ setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorC
          }
          else {
             setOakErrorCount(oakErrorCount + 1)
-         }
-         
+         }  
       }
       setIsLoading(false);
    }
@@ -63,6 +71,11 @@ const Form =({ setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorC
             <input placeholder='Pokemon name:' type="text" name="name" onChange={event => setPokemonName(event.target.value)} />
 
             <input type="submit" value="Submit" />
+
+            {(isError)
+               ? <p>That doesnt seem to be a valid pokemon name</p>
+               : <></>
+            }
          </form>
       </Wrapper>
    )

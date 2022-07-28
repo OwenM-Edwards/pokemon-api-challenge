@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     flex-direction:column;
     align-items:center;
   }
-  
+
   .loadingContainer {
     position:relative;
     top:300px;
@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
         <img className="headerImage" src={who_pokemon_image}/>
 
-        <Form setIsError={setIsError} setPokemon={setPokemon} setIsLoading={setIsLoading} oakErrorCount={oakErrorCount} setOakErrorCount={setOakErrorCount}/>
+        <Form isError={isError} setIsError={setIsError} setPokemon={setPokemon} setIsLoading={setIsLoading} oakErrorCount={oakErrorCount} setOakErrorCount={setOakErrorCount}/>
 
         {(pokemon)
           ? <PokemonInfo pokemon={pokemon} />
