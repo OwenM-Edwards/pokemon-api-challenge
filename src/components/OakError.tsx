@@ -39,9 +39,9 @@ interface Props {
  
 
 const oakErrorPhrases = [
-    "That 'aint no pokemon I've ever heard of",
+    "That 'aint no pokemon I've ever heard of.",
     "You been drinking those Hi-Potions again?",
-    "That meant to be one of those deeg-ee-mons or something?"
+    "That meant to be one of those 'deeg-ee-mons' or something?"
 ]
 
 
@@ -66,8 +66,7 @@ const OakError = ({ isError,setIsError,oakErrorCount }: Props) => {
                 }, 1000)
 
             }, 4000)
-
-        }, 600)
+        }, 300)
     }, []);
 
     return (

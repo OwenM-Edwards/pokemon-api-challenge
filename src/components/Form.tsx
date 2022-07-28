@@ -18,7 +18,7 @@ const Wrapper = styled.div`
          padding:10px;
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       }
-      
+
       input:nth-of-type(1){
          margin-bottom:20px;
       }
@@ -50,7 +50,7 @@ const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, 
       try {
          const response = await baseUrl.get(pokemonName);
          setPokemon(response.data);
-
+         
       } catch (error){
          setIsError(true);
          setPokemon(false);

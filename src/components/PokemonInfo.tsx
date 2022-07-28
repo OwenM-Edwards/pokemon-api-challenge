@@ -24,7 +24,7 @@ const Wrapper = styled.div`
         /* width:100%; */
         /* object-fit:contain; */
         width:50%;
-        margin:-50px 0 -30px 0;
+        margin:-20px 0 0 0;
     }
 
     h2 {
@@ -63,15 +63,46 @@ const Wrapper = styled.div`
         }
 
     }
+
+    .gamesContainer {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        border:2px solid red;
+        margin-bottom:30px;
+        width:100%;
+
+        h3 {
+            width:100%;
+            background-color:#0075BE;
+            padding:20px;
+            text-align:center;
+        }
+        
+        ul {
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            column-count: 3;
+            padding:30px;
+
+            li {
+                padding:0 10px;
+            }
+        }
+        p {
+            font-size:17px;
+            font-weight:bold;
+        }
+    }
 `
 
 
 const PokemonInfo = ({pokemon}: Props) => {
 
     useEffect(() => {
-        console.log(pokemon)
+        console.log(pokemon.game_indices[0].version)
+        
     }, []);
-
 
     const createPokemonStats = (stats : any):any[] => {
         let tempHtml: any[] = [];
@@ -91,6 +122,19 @@ const PokemonInfo = ({pokemon}: Props) => {
         return tempHtml;
     }
 
+    const createPokemonGameIndex = (games : any):any[] => {
+        let tempHtml: any[] = [];
+        let key = 0;
+        games.forEach(function (game : any) {
+            tempHtml = [...tempHtml, (
+                <li key={key}>
+                    <p>{game.version.name}</p>
+                </li>
+            )];
+            key++;
+        });
+        return tempHtml;
+    }
 
     return (
         <Wrapper>
@@ -98,17 +142,22 @@ const PokemonInfo = ({pokemon}: Props) => {
             <img src={pokemon.sprites.front_default}/>
             
             <div className="basicInfoContainer">
-                <p>Height: {pokemon.height}</p>
-                <p>Weight: {pokemon.weight}</p>
+                <p>Height: {pokemon.height / 10 } m</p>
+                <p>Weight: {pokemon.weight / 10 } kg</p>
                 <p>Species: {pokemon.species.name}</p>
             </div>
 
             {createPokemonStats(pokemon.stats)}
 
-            {/* 
-            list of base stats
-            number of games appeared in
-            */}
+            <div className="gamesContainer">
+                <h3>
+                    {pokemon.name.replace(/^\w/, (name:string) => name.toUpperCase())} has appeared in {pokemon.game_indices.length} games
+                </h3>
+                <ul>
+                    {createPokemonGameIndex(pokemon.game_indices)}
+                </ul>
+                
+            </div>
         </Wrapper>   
     )
 }
