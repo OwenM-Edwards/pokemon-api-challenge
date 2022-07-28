@@ -35,6 +35,7 @@ const Wrapper = styled.div`
 
 const App: React.FC = () => {
   const [pokemon, setPokemon] = useState(false);
+  const [pokemonSpecies, setPokemonSpecies] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [oakErrorCount, setOakErrorCount] = useState(-1);
@@ -53,10 +54,18 @@ const App: React.FC = () => {
 
         <img className="headerImage" src={who_pokemon_image}/>
 
-        <Form isError={isError} setIsError={setIsError} setPokemon={setPokemon} setIsLoading={setIsLoading} oakErrorCount={oakErrorCount} setOakErrorCount={setOakErrorCount}/>
+        <Form 
+          isError={isError} 
+          setIsError={setIsError} 
+          setPokemon={setPokemon} 
+          setIsLoading={setIsLoading} 
+          oakErrorCount={oakErrorCount} 
+          setOakErrorCount={setOakErrorCount}
+          setPokemonSpecies={setPokemonSpecies}
+        />
 
         {(pokemon)
-          ? <PokemonInfo pokemon={pokemon} />
+          ? <PokemonInfo pokemon={pokemon} pokemonSpecies={pokemonSpecies} />
           : <></>
         }
 

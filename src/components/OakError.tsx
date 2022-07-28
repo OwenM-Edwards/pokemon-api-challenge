@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 
 const Wrapper = styled.div`
-    width:300px;
-    height:300px;
+    width:200px;
+    height:200px;
     position:absolute;
     bottom:0;
     left:0;

@@ -38,18 +38,26 @@ interface Props {
    setOakErrorCount:(setOakErrorCount:number) => void;
    oakErrorCount:number;
    isError:boolean;
+   setPokemonSpecies:(setPokemonSpecies: any) => void;
 }
 
 
-const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorCount}: Props) => {
+const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorCount, setPokemonSpecies }: Props) => {
    const [pokemonName, setPokemonName] = useState('');
 
    const handleSubmit = async (e:React.FormEvent) => {
       e.preventDefault();
       setIsLoading(true);
       try {
-         const response = await baseUrl.get(pokemonName);
+         const response = await baseUrl.get('pokemon/' + pokemonName);
          setPokemon(response.data);
+
+         try {
+            const response = await baseUrl.get('pokemon-species/' + pokemonName);
+            setPokemonSpecies(response.data);
+         } catch (error){
+            setPokemonSpecies('Unknown');
+         }
          
       } catch (error){
          setIsError(true);

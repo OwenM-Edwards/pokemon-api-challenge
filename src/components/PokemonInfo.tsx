@@ -6,6 +6,7 @@ import styled, {ThemeProvider, keyframes} from "styled-components";
 
 interface Props {
     pokemon:any;
+    pokemonSpecies:any;
 }
 
 
@@ -97,12 +98,7 @@ const Wrapper = styled.div`
 `
 
 
-const PokemonInfo = ({pokemon}: Props) => {
-
-    useEffect(() => {
-        console.log(pokemon.game_indices[0].version)
-        
-    }, []);
+const PokemonInfo = ({pokemon, pokemonSpecies}: Props) => {
 
     const createPokemonStats = (stats : any):any[] => {
         let tempHtml: any[] = [];
@@ -144,7 +140,7 @@ const PokemonInfo = ({pokemon}: Props) => {
             <div className="basicInfoContainer">
                 <p>Height: {pokemon.height / 10 } m</p>
                 <p>Weight: {pokemon.weight / 10 } kg</p>
-                <p>Species: {pokemon.species.name}</p>
+                <p>Species: {pokemonSpecies.names[1].name}</p>
             </div>
 
             {createPokemonStats(pokemon.stats)}
