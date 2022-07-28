@@ -1,37 +1,67 @@
 import React, {useState}  from 'react';
 import baseUrl from '../http-common';
+import styled from "styled-components";
 
+
+const Wrapper = styled.div`
+   background-color:blue;
+   width:100%;
+   form {
+      padding:50px;
+      background-color:#DFDFDF;
+      display:flex;
+      flex-direction:column;
+      input {
+         padding:10px;
+      }
+      input:nth-of-type(1){
+         margin-bottom:20px;
+      }
+   }
+`
 
 
 interface Props {
-   setPokemon:(pokemon: string) => void;
+   setPokemon:(pokemon: any) => void;
    setIsLoading:(isLoading: boolean) => void;
- }
+   setIsError:(setIsError:boolean) => void;
+   setOakErrorCount:(setOakErrorCount:number) => void;
+   oakErrorCount:number;
+}
 
-const Form =({ setPokemon, setIsLoading}: Props) => {
+
+const Form =({ setPokemon, setIsLoading, setIsError, setOakErrorCount, oakErrorCount}: Props) => {
    const [pokemonName, setPokemonName] = useState('');
-   // clefairy
+
    const handleSubmit = async (e:React.FormEvent) => {
       e.preventDefault();
       setIsLoading(true);
       try {
          const response = await baseUrl.get(pokemonName);
-         setPokemon(response.data.name);
+         setPokemon(response.data);
 
       } catch (error){
-         console.log(error)
+         setIsError(true);
+         if(oakErrorCount === 2){
+            setOakErrorCount(0)
+         }
+         else {
+            setOakErrorCount(oakErrorCount + 1)
+         }
+         
       }
       setIsLoading(false);
    }
 
    return (
-      <form onSubmit={(e)=>handleSubmit(e)} >
-         <label>
-            Name:
-            <input type="text" name="name" onChange={event => setPokemonName(event.target.value)} />
-         </label>
-         <input type="submit" value="Submit" />
-      </form>
+      <Wrapper>
+         <form onSubmit={(e)=>handleSubmit(e)} >
+            
+            <input placeholder='Pokemon name:' type="text" name="name" onChange={event => setPokemonName(event.target.value)} />
+
+            <input type="submit" value="Submit" />
+         </form>
+      </Wrapper>
    )
 }
 
