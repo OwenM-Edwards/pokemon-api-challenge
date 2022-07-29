@@ -24,7 +24,7 @@ const App: React.FC = () => {
     return (
       <div className="content">
 
-        <img className="headerImage" src={who_pokemon_image}/>
+        <img className="headerImage" src={who_pokemon_image} alt="Who is that Pokemon"/>
 
         <Form 
           isError={isError} 
@@ -42,7 +42,7 @@ const App: React.FC = () => {
         }
 
         {(isError && !isLoading)
-          ? <OakError setIsError={setIsError} isError={isError} oakErrorCount={oakErrorCount}/>
+          ? <OakError oakErrorCount={oakErrorCount}/>
           : <></>
         }
       </div>

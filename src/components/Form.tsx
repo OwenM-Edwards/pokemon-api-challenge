@@ -20,6 +20,7 @@ const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, 
    const handleSubmit = async (e:React.FormEvent) => {
       e.preventDefault();
       setIsLoading(true);
+      setIsError(false);
       try {
          const response = await baseUrl.get('pokemon/' + pokemonName.toLowerCase());
          setPokemon(response.data);

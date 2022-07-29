@@ -11,39 +11,14 @@ const oakErrorPhrases = [
 
 
 interface Props {
-    isError:any;
-    setIsError:(setIsError:boolean) => void;
     oakErrorCount:number;
 }
 
 
-const OakError = ({ isError,setIsError,oakErrorCount }: Props) => {
-
-    const getErrorMessage = () => {
-        return (
-            oakErrorPhrases[oakErrorCount]
-        )
-    }
-
-    useEffect(() => {
-        setTimeout(()=>{
-            // Fade in
-            document.querySelector('#wrapper')?.classList.remove('hidden');
-
-            // After short time, fade out then remove error flag
-            setTimeout(()=>{
-                document.querySelector('#wrapper')?.classList.add('hidden');
-                setTimeout(()=>{
-                    setIsError(false);
-                }, 1000)
-
-            }, 4000)
-        }, 300)
-    }, []);
-
+const OakError = ({ oakErrorCount }: Props) => {
     return (
-        <Wrapper id="wrapper" className="hidden">
-            <p className="errorMessage">"{getErrorMessage()}"</p>
+        <Wrapper id="wrapper">
+            <p className="errorMessage">"{oakErrorPhrases[oakErrorCount]}"</p>
         </Wrapper>
     )
 }
@@ -58,13 +33,8 @@ const Wrapper = styled.div`
     display:flex;
     justify-content:flex-end;
     align-items:flex-end;
-    transition:all 0.5s ease-in-out;
     background: url('${OakImage}') no-repeat center;
     background-size:cover;
-
-    &.hidden {
-        opacity:0;
-    }
 
     p {
         position:absolute;
