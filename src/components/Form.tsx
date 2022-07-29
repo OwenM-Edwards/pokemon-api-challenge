@@ -19,6 +19,9 @@ const Form =({ isError, setPokemon, setIsLoading, setIsError, setOakErrorCount, 
 
    const handleSubmit = async (e:React.FormEvent) => {
       e.preventDefault();
+      if(pokemonName.length < 1){
+         return
+      }
       setIsLoading(true);
       setIsError(false);
       try {
